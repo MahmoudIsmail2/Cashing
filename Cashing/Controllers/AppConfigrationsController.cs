@@ -30,7 +30,22 @@ namespace Cashing.Controllers
                 _memoryCahService.SettoCash(configrationsKey, configData);
             }           
             return Ok(configData);
-        }          
+        }
+        [HttpPost("UpdateConfigration")] 
+        public IActionResult  UpdateConfigration([FromBody]AppConfigrationsModel configData)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            // Simulate Configrations Update
+             configData = _configrationData.UpdateConfigrations(configData);
+
+            _memoryCahService.RemoveFromCash(configrationsKey);
+
+            return Ok();
+        }
+        
         
     }
 }
