@@ -1,6 +1,5 @@
 ﻿using Cashing.Bl.Interfaces;
 using Cashing.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cashing.Controllers
@@ -39,7 +38,7 @@ namespace Cashing.Controllers
                 return BadRequest(ModelState);
             }
             // Simulate Configrations Update
-             configData = _configrationData.UpdateConfigrations(configData);
+             _configrationData.SetConfigrations(configData);
 
             _memoryCahService.RemoveFromCash(configrationsKey);
 
